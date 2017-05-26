@@ -2,7 +2,7 @@
 
 gogs:
   download_url: 'https://cdn.gogs.io/0.11.4/linux_amd64.tar.gz'
-  hash: '06577af116ce6f1225cc3056e3fe36b3fa6bb0f9'
+  hash: false
   config:
     main:
       run_user: git
