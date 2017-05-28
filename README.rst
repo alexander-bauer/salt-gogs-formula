@@ -20,6 +20,8 @@ Available states
 
 Install Gogs without any nginx proxy setup from the binary distribution and start it up.
 
+.. note:: You must generate and set ``gogs:config:security:secret_key``.
+
 
 ``gogs.nginx``
 --------------

@@ -8,6 +8,7 @@ gogs:
   groups: []
   config:
     main:
+      app_name: 'Gogs'
       run_user: git
       run_mode: prod
 
@@ -24,9 +25,19 @@ gogs:
       root: /opt/gogs/git/repositories
 
     server:
-      domain: localhost
+      domain: git.example.com # ssh URL
       http_port: 3000
-      root_url: http://localhost:3000
+      root_url: http://git.example.com:3000 # http URL
+
+    mailer:
+      enabled: false
+
+    service:
+      register_email_confirm: false
+      enable_notify_mail: false
+      disable_registration: false
+      enable_captcha: true
+      require_signin_view: false
 
     session:
       provider: file
@@ -34,3 +45,8 @@ gogs:
     log:
       mode: console
       level: Info
+      root_path: /var/log/gogs
+
+    security:
+      install_lock: true
+      secret_key: MvkMTgfZx178xmB # MUST BE SET
