@@ -1,4 +1,4 @@
-{% from "map.jinja" import gogs %}
+{% from "gogs/map.jinja" import gogs %}
 gogs-conf-ini:
   file.managed:
     - name: {{ gogs.home_dir }}/custom/conf/app.ini

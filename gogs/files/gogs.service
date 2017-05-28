@@ -1,4 +1,4 @@
-{%- from "map.jinja" import gogs %}
+{%- from "gogs/map.jinja" import gogs %}
 {%- set user = gogs.config.main.run_user %}
 [Unit]
 Description=Gogs
