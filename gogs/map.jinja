@@ -1,3 +1,17 @@
+# vim: ft=sls
 {% import_yaml "gogs/defaults.yaml" as defaults %}
+
+{% set defaults['lookup'] = salt['grains.filter_by']({
+  'systemd': {
+    'service_file': '/usr/lib/systemd/system/gogs.service'
+    'service_source': 'salt://gogs/files/gogs.service'
+  },
+  'upstart': {
+    'service_file': '/etc/init/gogs.conf'
+    'service_source': 'salt://gogs/files/upstart-gogs.jinja'
+  }
+}, grain='init', default='systemd')
+%}
+	
 
 {% set gogs = salt['pillar.get']('gogs', default=defaults, merge=True) %}
