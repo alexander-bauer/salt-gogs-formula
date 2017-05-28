@@ -3,6 +3,9 @@
 gogs:
   download_url: 'https://cdn.gogs.io/0.11.4/linux_amd64.tar.gz'
   hash: false
+  home_dir: /opt/gogs/git
+  logs_dir: /var/log/gogs
+  groups: []
   config:
     main:
       run_user: git
@@ -15,10 +18,10 @@ gogs:
       user:     root
       passwd:   ''
       ssl_mode: disable
-      path:     data/gogs.db
+      path:     /opt/gogs/git/data/gogs.db
 
     repository:
-      root: /home/git/gogs-repositories
+      root: /opt/gogs/git/repositories
 
     server:
       domain: localhost

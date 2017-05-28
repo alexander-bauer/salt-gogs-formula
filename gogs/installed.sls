@@ -1,4 +1,5 @@
 # vim: ft=yaml softtabstop=2 tabstop=2 shiftwidth=2 expandtab autoindent
+{%- from "map.jinja" import gogs %}
 
 gogs-requirements:
   pkg.latest:
@@ -8,21 +9,25 @@ gogs-requirements:
 gogs-installed:
   archive.extracted:
     - name: /opt/
-    - source: https://dl.gogs.io/gogs_v{{ salt['pillar.get']('gogs:version') }}_linux_amd64.tar.gz
-    - source_hash: {{ salt['pillar.get']('gogs:hash') }}
+    - source: {{ gogs.download_url }}
+    {%- if gogs.hash %}
+    - source_hash: {{ gogs.hash }}
+    {%- endif %}
     - archive_format: tar
-    - if_missing: /opt/gogs/
+    - if_missing: /opt/gogs
   file.directory:
     - name: /opt/gogs/
-    - user: git
-    - group: git
+    - user: {{ gogs.config.main.run_user }}
+    - group: {{ gogs.config.main.run_user }}
     - recurse:
        - user
        - group
 
-/var/log/gogs:
+{%- if gogs.logs_dir %}
+gogs-logs-dir:
   file.directory:
-    - user: git
+    - name: {{ gogs.logs_dir }}
+    - user: {{ gogs.config.main.run_user }}
     - group: adm
     - dir_mode: 750
     - makedirs: True
@@ -30,3 +35,4 @@ gogs-installed:
       - user
       - group
       - mode
+{%- endif %}
