@@ -12,6 +12,8 @@ gogs-installed:
     - source: {{ gogs.download_url }}
     {%- if gogs.hash %}
     - source_hash: {{ gogs.hash }}
+    {%- else %}
+    - skip_verify: true
     {%- endif %}
     - archive_format: tar
     - if_missing: /opt/gogs
