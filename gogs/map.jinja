@@ -13,4 +13,4 @@
 }, grain='init', default='systemd')}) %}
 	
 
-{% set gogs = salt['pillar.get']('gogs', default=defaults, merge=True) %}
+{% set gogs = defaults.update(salt['pillar.get']('gogs', {})) %}
