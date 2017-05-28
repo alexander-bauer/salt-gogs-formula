@@ -16,10 +16,10 @@ After=mariadb.service mysqld.service postgresql.service memcached.service redis.
 Type=simple
 User={{user}}
 Group={{user}}
-WorkingDirectory={{gogs.config.home_dir}}
+WorkingDirectory={{gogs.home_dir}}
 ExecStart=/opt/gogs/gogs web
 Restart=always
-Environment=USER={{user}} HOME={{gogs.config.home_dir}}
+Environment=USER={{user}} HOME={{gogs.home_dir}}
 
 [Install]
 WantedBy=multi-user.target
