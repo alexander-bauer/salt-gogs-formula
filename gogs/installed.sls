@@ -38,3 +38,11 @@ gogs-logs-dir:
       - group
       - mode
 {%- endif %}
+
+{%- if gogs.sudoers_update_gitfs %}
+gogs-sudoers-update-gitfs:
+  file.managed:
+    - name: /etc/sudoers.d/gogs-gitfs
+    - source: salt://gogs/files/gogs-gitfs-sudoers
+    - template: jinja
+{%- endif %}

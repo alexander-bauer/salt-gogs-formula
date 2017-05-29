@@ -49,3 +49,6 @@ gogs:
 
     security:
       install_lock: true
+  sudoers_update_gitfs: false
+  gitfs_salt_call: /usr/bin/salt-call
+  gitfs_event: salt/fileserver/gitfs/update

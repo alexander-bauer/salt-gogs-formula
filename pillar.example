@@ -50,3 +50,7 @@ gogs:
     security:
       install_lock: true
       secret_key: MvkMTgfZx178xmB # MUST BE SET
+
+  sudoers_update_gitfs: false
+  gitfs_salt_call: /usr/bin/salt-call
+  gitfs_event: salt/fileserver/gitfs/update
