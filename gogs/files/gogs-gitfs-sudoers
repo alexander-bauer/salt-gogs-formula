@@ -1,6 +1,6 @@
 # This file is managed by Salt! Do not edit it by hand.
 {%- from "gogs/map.jinja" import gogs %}
 # These directives allow Gogs to fire the GitFS update event in Salt.
-Cmnd_Alias SALT_GIT_HOOK = {{gogs.gitfs_salt_call}} event.fire_master {{gogs.gitfs_event}}
+Cmnd_Alias SALT_GIT_HOOK = {{gogs.gitfs_salt_call}} event.fire_master update {{gogs.gitfs_event}}
 Defaults!SALT_GIT_HOOK !requiretty
 {{gogs.config.main.run_user}} ALL=(root) NOPASSWD:SALT_GIT_HOOK
