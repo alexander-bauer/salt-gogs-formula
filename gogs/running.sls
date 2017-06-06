@@ -10,6 +10,7 @@ gogs-service:
 gogs-running:
   service.running:
     - name: gogs
+    - enable: true
     - require:
       - file: gogs-service
     - watch:
